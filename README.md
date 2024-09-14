@@ -9,7 +9,7 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 
 
-Some ip notes: 
+Some ip/ssh notes: 
 
 use:  
 ```bash
@@ -25,7 +25,8 @@ This will show your local network address. What I am typically looking for is a 
 
 ```bash
 ip a | grep eno1
-
+```
+```bash
 #output
 inet 192.168.1.10/24 brd 192.168.1.255 scope global eno1
 ```
@@ -36,3 +37,24 @@ inet addr:92.168.1.10 Bcast:192.168.1.255 Mask:255.255.255.0
 inet6 addr: fe80::73f1:a1ef:fec2:f2e8/64 Scope:Link
 ```
 You determine the ip range from the the mask. For example 255.255.255.0 and 192.168.1.10/24 from the same ip and show the range to be from 192.168.1.0 to 192.168.1.255. 
+
+Scan your network with: 
+
+```bash 
+nmap -sn 192.168.1.0/24
+```
+Example output: 
+```bash
+Starting Nmap 7.92 ( https://nmap.org ) at 2024-09-14 10:00 UTC
+Nmap scan report for 192.168.1.1
+Host is up (0.0050s latency).
+Nmap scan report for 192.168.1.10
+Host is up (0.010s latency).
+Nmap scan report for 192.168.1.20
+Host is up (0.020s latency).
+Nmap scan report for 192.168.1.30
+Host is up (0.015s latency).
+Nmap scan report for 192.168.1.255
+Host is up (0.012s latency).
+Nmap done: 256 IP addresses (5 hosts up) scanned in 3.00 seconds
+```
