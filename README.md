@@ -1,4 +1,4 @@
-# open_ssh_ports
+## open_ssh_ports
 Temporary open ssh and print open IP with Dynamic DHCP
 
 Goal of this project have a shell script that opens and closes ssh ports when running. 
@@ -58,3 +58,16 @@ Nmap scan report for 192.168.1.255
 Host is up (0.012s latency).
 Nmap done: 256 IP addresses (5 hosts up) scanned in 3.00 seconds
 ```
+# A word about SSH safety... 
+
+For the purposes of this project. I will only be opening SSH to myself over my local network. 
+I will use firewall deny rules to prevent un-Authorized connection
+I will monitor all active connections from the host. 
+I will consider using SSH keys instead of password connection. 
+
+Lets enable port 22 on a Debian based system. 
+For this we will use ufw (Uncomplicated Firewall)
+
+
+
+
