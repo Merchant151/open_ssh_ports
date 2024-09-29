@@ -68,6 +68,36 @@ I will consider using SSH keys instead of password connection.
 Lets enable port 22 on a Debian based system. 
 For this we will use ufw (Uncomplicated Firewall)
 
+First verify ufw is enabled. by default ufw allows all outgoing traffic and deny's all incoming traffic. 
+
+```bash
+$> sudo ufw status
+Status: inactive
+```
+If inactive enable with:
+
+```bash
+$> sudo ufw enable
+$> sudo ufw status
+Status: active
+```
+
+Note ufw by default deny's all traffic. Lets allow only the traffic from the network above. 192.168.1.0/24 Specifically the subnet
+However a smaller range can be used or specific IP if wanted. As least priviledge is probably best!  
+
+```bash
+$> sudo ufw allow from 192.168.1.0/24 to any port 22
+```
+
+Next steps to include.. 
+Activating SSH 
+Monitoring Connection 
+creating ssh keys
+connecting via remote
+Shutting down SSH and invoking Deny all rule
+
+any other security considerations. 
+
 
 
 
