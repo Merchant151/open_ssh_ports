@@ -9,7 +9,7 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 
 
-Some ip/ssh notes: 
+### Some ip/ssh notes: 
 
 use:  
 ```bash
@@ -60,10 +60,16 @@ Nmap done: 256 IP addresses (5 hosts up) scanned in 3.00 seconds
 ```
 # A word about SSH safety... 
 
-For the purposes of this project. I will only be opening SSH to myself over my local network. 
-I will use firewall deny rules to prevent un-Authorized connection
-I will monitor all active connections from the host. 
-I will consider using SSH keys instead of password connection. 
+It's important not to leave ports open and to finely control and monitor network access when doing stuff like this on a computer that is connected to the internet. 
+For the purposes of this project. I will only be opening SSH to myself over my local network. I will try to follow the following practices: 
+
+[ ] I will use firewall deny rules to prevent un-Authorized connection.
+
+[ ] I will monitor all active connections from the host. 
+
+[ ] I will consider using SSH keys instead of password connection. 
+
+### Steps 
 
 Lets enable port 22 on a Debian based system. 
 For this we will use ufw (Uncomplicated Firewall)
@@ -97,7 +103,7 @@ On the server use:
 $> sudo systemctl enable ssh
 $> sudo systemctl start ssh
 ```
-Warning remember not to leave SSH enabled unless you know what you are doing!
+#### Warning remember not to leave SSH enabled unless you know what you are doing!
 
 Monitoring Connection 
 
@@ -105,7 +111,12 @@ creating ssh keys
 
 connecting via remote
 
-Shutting down SSH and invoking Deny all rule
+When you are done with SSH always deativate and disable it with 
+
+```bash
+$> sudo systemctl stop ssh
+$> sudo systemctl disable ssh
+```
 
 any other security considerations. 
 
