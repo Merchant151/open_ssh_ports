@@ -89,11 +89,22 @@ However a smaller range can be used or specific IP if wanted. As least priviledg
 $> sudo ufw allow from 192.168.1.0/24 to any port 22
 ```
 
-Next steps to include.. 
 Activating SSH 
+most linux systems are using Systemd which means we will use systemctl command to start ssh 
+
+On the server use: 
+```bash
+$> sudo systemctl enable ssh
+$> sudo systemctl start ssh
+```
+Warning remember not to leave SSH enabled unless you know what you are doing!
+
 Monitoring Connection 
+
 creating ssh keys
+
 connecting via remote
+
 Shutting down SSH and invoking Deny all rule
 
 any other security considerations. 
