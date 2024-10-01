@@ -105,7 +105,11 @@ $> sudo systemctl start ssh
 ```
 #### Warning remember not to leave SSH enabled unless you know what you are doing!
 
-Monitoring Connection 
+Monitoring and logging Connection 
+
+I am going to try to use a tool called fail2ban to monitor and track all authentication attempts
+I will also use a combination of w who and last to monitor log and track system activity while SSH is enabled! 
+## Configure fail2ban 
 
 creating ssh keys
 
@@ -120,6 +124,8 @@ $> sudo systemctl disable ssh
 
 any other security considerations. 
 
+create automated live log following 
 
+destroy outdated logs to manage storage usage. 
 
 
