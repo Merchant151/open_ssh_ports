@@ -111,8 +111,25 @@ I am going to try to use a tool called fail2ban to monitor and track all authent
 I will also use a combination of w who and last to monitor log and track system activity while SSH is enabled! 
 ## Configure fail2ban 
 
-creating ssh keys
+## creating ssh keys
 
+ssh keys are a more secure way to connect than a password auth. The way it works is we generate 'keys' one public and one private as an asymetric key-pair. The Public Key is used to encrypt messages and the private key is used to decrypt messages.
+The way the host authenticates the client is by sending a random 'question' encrypted by the public key and the user has to send back the 'answer' which they can only derive by decrypting it first with the private key. what makes it secure is that the private key is never shared and only exists in a secure sometimes encrypted file on the clients computer. The key can only be comprimised if it shared or the clients machine is compromised. it is best practice to use a secure encryption algorythem when generating the keys and to regularly rotate keys over time. 
+
+To create a ssh key we can use OpenSSH's keygen command. 
+```bash
+$> ssh-keygen -t rsa -b 4096 
+```
+it will ask you where you want to store it and what password you would like to use. 
+
+SSH keys are ususally stored in a /home/user/.ssh/key_name file 
+
+A password will encrypt your private key. 
+
+You can specify the file name in an option like so:  
+```bash
+$> ssh-keygen -t rsa -b 4096 -f /home/{user}/.ssh/{key_name}
+```
 connecting via remote
 
 When you are done with SSH always deativate and disable it with 
