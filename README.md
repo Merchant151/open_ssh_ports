@@ -137,19 +137,19 @@ $> ssh-keygen -t rsa -b 4096 -f /home/{user}/.ssh/{key_name}
 $> cat ~/{keys} >> ~/.ssh/authorized_keys
 ```
 
-# connecting via remote
+## connecting via remote
 
-# When you are done with SSH always deativate and disable it with 
+## When you are done with SSH always deativate and disable it with 
 
 ```bash
 $> sudo systemctl stop ssh
 $> sudo systemctl disable ssh
 ```
 
-# any other security considerations. 
+## any other security considerations. 
 
-# create automated live log following 
+## create automated live log following 
 
-# destroy outdated logs to manage storage usage. 
+## destroy outdated logs to manage storage usage. 
 
 
