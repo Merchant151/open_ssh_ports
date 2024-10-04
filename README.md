@@ -130,19 +130,26 @@ You can specify the file name in an option like so:
 ```bash
 $> ssh-keygen -t rsa -b 4096 -f /home/{user}/.ssh/{key_name}
 ```
-connecting via remote
 
-When you are done with SSH always deativate and disable it with 
+### On the remote machine add the public key to the authorized_keys file 
+
+```bash
+$> cat ~/{keys} >> ~/.ssh/authorized_keys
+```
+
+# connecting via remote
+
+# When you are done with SSH always deativate and disable it with 
 
 ```bash
 $> sudo systemctl stop ssh
 $> sudo systemctl disable ssh
 ```
 
-any other security considerations. 
+# any other security considerations. 
 
-create automated live log following 
+# create automated live log following 
 
-destroy outdated logs to manage storage usage. 
+# destroy outdated logs to manage storage usage. 
 
 
