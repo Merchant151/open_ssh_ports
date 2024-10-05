@@ -132,9 +132,11 @@ $> ssh-keygen -t rsa -b 4096 -f /home/{user}/.ssh/{key_name}
 ```
 
 ### On the remote machine add the public key to the authorized_keys file 
+And change the permissions on the file.
 
 ```bash
 $> cat ~/{keys} >> ~/.ssh/authorized_keys
+$> chmod 600 ~/.ssh/authorized_keys
 ```
 
 ## connecting via remote
