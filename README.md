@@ -111,6 +111,65 @@ I am going to try to use a tool called fail2ban to monitor and track all authent
 I will also use a combination of w who and last to monitor log and track system activity while SSH is enabled! 
 ## Configure fail2ban 
 
+Install fail to ban 
+
+Debian: 
+```bash
+$> sudo apt install fail2ban
+```
+Then copy the conf files to a local files. This will isnure orriginal configuration file is non modified on update. The jail file is where ssh and ban rules are configured whil fail2ban is for general configurations.
+```bash
+$> cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+$> cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+Now we are going to set agressive ban rules and activate sshd in fail2ban.
+As well as perminatly ban any bad actors! 
+
+
+
+edit the jail.local file and under the [sshd] secition add enabled = true
+
+```vim
+[sshd]
+
+enabled = true
+mode = aggressive
+```
+Also add adjust fail ban and find times using a negative bantime will permit permanent bans
+
+under the default tag modify the following options 
+```vim
+# this will assist in error handling
+backend = systemd
+
+# "bantime" is the number of seconds that a host is banned.
+bantime  = -1
+
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds.
+findtime = 600
+maxretry = 3
+```
+
+set ban action to ufw since we are using ufw firewall.
+
+```bash
+banaction = ufw
+```
+
+## fail2ban client 
+
+```bash
+$> fail2ban-client status
+```
+use the fail to ban client to check status and unban ips. 
+
+When you are ready to start fail2ban use 
+
+```bash
+fail2ban-client start
+```
+
 ## creating ssh keys
 
 ssh keys are a more secure way to connect than a password auth. The way it works is we generate 'keys' one public and one private as an asymetric key-pair. The Public Key is used to encrypt messages and the private key is used to decrypt messages.
