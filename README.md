@@ -93,6 +93,12 @@ However a smaller range can be used or specific IP if wanted. As least priviledg
 
 ```bash
 $> sudo ufw allow from 192.168.1.0/24 to any port 22
+
+#to verify current firewall rules use
+$> sudo ufw status verbose
+
+#if you want to reset your firewall rules to default use
+$> sudo ufw reset
 ```
 
 Activating SSH 
@@ -117,7 +123,7 @@ Debian:
 ```bash
 $> sudo apt install fail2ban
 ```
-Then copy the conf files to a local files. This will isnure orriginal configuration file is non modified on update. The jail file is where ssh and ban rules are configured whil fail2ban is for general configurations.
+Then copy the conf files to a local files. This will isnure orriginal configuration file is not modified on update. The jail file is where ssh and ban rules are configured whil fail2ban is for general configurations.
 ```bash
 $> cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 $> cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
