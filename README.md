@@ -93,6 +93,8 @@ However a smaller range can be used or specific IP if wanted. As least priviledg
 
 ```bash
 $> sudo ufw allow from 192.168.1.0/24 to any port 22
+#i allow tcp for scan requests from smap so I can pick up the ip address  
+$> sudo ufw allow from 192.168.1.0/24 to any port 443
 
 #to verify current firewall rules use
 $> sudo ufw status verbose
