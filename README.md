@@ -177,6 +177,11 @@ When you are ready to start fail2ban use
 ```bash
 fail2ban-client start
 ```
+Lets say you try to login... and do something wrong... and you need to unban yourself use the following command
+
+```bash
+$> sudo fail2ban-client set sshd unbanip 192.168.1.<IP> 
+```
 
 ## creating ssh keys
 
