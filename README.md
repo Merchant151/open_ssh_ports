@@ -102,8 +102,29 @@ $> sudo ufw status verbose
 #if you want to reset your firewall rules to default use
 $> sudo ufw reset
 ```
+## Configuring SSHD on the remote 
 
-Activating SSH 
+To enable ssh to use ssh keys we will likely need to enable that form of authentication. 
+
+sshd is configured in: 
+```bash
+/etc/ssh/sshd_config
+```
+modify the file and add the following lines: 
+```
+LogLevel DEBUG
+
+PermitRootLogin no
+
+PasswordAuthentication no
+```
+
+Aditionall Notes: 
+
+Auth attempts will be logged in /var/log/auth.log and if in debug mode we will likely be able to see the 
+auth rules printed here 
+
+## Activating SSH 
 most linux systems are using Systemd which means we will use systemctl command to start ssh 
 
 On the server use: 
