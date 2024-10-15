@@ -131,6 +131,8 @@ On the server use:
 ```bash
 $> sudo systemctl enable ssh
 $> sudo systemctl start ssh
+# verify ssh status 
+$> sudo systemctl status ssh
 ```
 #### Warning remember not to leave SSH enabled unless you know what you are doing!
 
@@ -239,6 +241,8 @@ $> chmod 600 ~/.ssh/authorized_keys
 ```bash
 $> sudo systemctl stop ssh
 $> sudo systemctl disable ssh
+# verify ssh status 
+$> sudo systemctl status ssh
 ```
 
 ## any other security considerations. 
