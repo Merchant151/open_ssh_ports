@@ -246,6 +246,17 @@ $> sudo systemctl status ssh
 ```
 
 ## any other security considerations. 
+One thing I noticed is when you disable ssh and reset the firewall this doesn't inturrupt any active connections. 
+So to monitor active connections you can check with 
+```bash
+$> ps aux | grep ssh
+```
+output should give you the psid of any active ssh feel free to kill it if you want to force any active connections to exit from the remote. (otherwise if you are the client just exit from client)
+```bash
+$> kill 11223
+```
+some places reccomend kill with option -u but this will kill all processes by that user and my ssh user and primary user are the same so I avoid this! but if you have separate users and want to kill all processes started by the client 
+feel free to use it. 
 
 ## create automated live log following 
 
