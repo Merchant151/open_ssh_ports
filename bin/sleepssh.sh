@@ -7,5 +7,5 @@ sudo ufw reset
 #status and info
 sudo systemctl status ssh
 sudo ufw status verbose
-ps aux | grep ssh 
+ps aux | grep ssh|grep -v 'grep ssh' 
 
