@@ -117,6 +117,8 @@ LogLevel DEBUG
 PermitRootLogin no
 
 PasswordAuthentication no
+PubkeyAuthentication yes
+
 ```
 
 Aditionall Notes: 
