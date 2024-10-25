@@ -63,7 +63,7 @@ Nmap done: 256 IP addresses (5 hosts up) scanned in 3.00 seconds
 It's important not to leave ports open and to finely control and monitor network access when doing stuff like this on a computer that is connected to the internet. 
 For the purposes of this project. I will only be opening SSH to myself over my local network. I will try to follow the following practices: 
 
-[ ] I will use firewall deny rules to prevent un-Authorized connection.
+[X] I will use firewall deny rules to prevent un-Authorized connection.
 
 [ ] I will monitor all active connections from the host. 
 
