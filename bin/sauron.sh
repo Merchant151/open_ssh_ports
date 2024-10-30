@@ -5,7 +5,10 @@ murderProcesses(){
    echo "ending bg process" 
    kill -9 $PID1 $PID2 $PID3
    #add 2>/dev/null if want to suppress output here
-   echo '<Sauron LOG>: I am being murdered! killing processes' >> ../logs/sauron.log
+   echo -n '<Sauron LOG> ' >> ../logs/sauron.log 
+   LOG_TIME=DATE
+   echo -n '$LOG_TIME ' >> ../logs/sauron.log
+   echo ': I am being murdered! killing processes' >> ../logs/sauron.log
    exit
 }
 
