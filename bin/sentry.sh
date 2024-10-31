@@ -10,3 +10,8 @@ function print_status(){
 	systemctl status ssh
 	systemctl status sshd
 }
+
+
+function ufw_status(){
+	systemctl is-active ufw >/dev/null 2>&1 && return 0 || return 1
+}
