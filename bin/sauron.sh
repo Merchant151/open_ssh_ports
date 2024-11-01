@@ -1,6 +1,15 @@
 #!/bin/bash
 #My goal for this script is to create a standalone logger  that while running will send data to a local log and will also tail that log
 
+#adding basic option handling
+while getopts ":h" option; do 
+	case $option in 
+		h) 
+			echo 'help option'
+			exit;;
+		esac
+	done
+if [ $OPTIND -eq 1 ]; then echo "No options passed" && exit; fi
 murderProcesses(){
    echo "ending bg process" 
    kill -9 $PID1 $PID2 $PID3
