@@ -20,10 +20,17 @@ while getopts ":cs" option; do
 if [ $MODE == 'cron' ]
 then 
 	echo "cron mode" 
+	#check if running if running exit 
+	#if not running check sshd and myssh
 	exit
 elif [ $MODE == 'standard' ]
 then 
 	echo 'standard mode'
+	#Sleep 5 mins 
+	#check if myssh is active 
+	#check if sshd is active 
+	#if sshd is active but myssh is inactive 
+	#log issue and kill everything close ports
 	exit
 else
 	echo 'no mode selected'
