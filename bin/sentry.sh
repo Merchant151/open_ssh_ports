@@ -26,11 +26,15 @@ then
 elif [ $MODE == 'standard' ]
 then 
 	echo 'standard mode'
-	#Sleep 5 mins 
 	#check if myssh is active 
 	#check if sshd is active 
 	#if sshd is active but myssh is inactive 
 	#log issue and kill everything close ports
+	while true 
+	do 
+		sleep 5m
+
+	done
 	exit
 else
 	echo 'no mode selected'
@@ -52,4 +56,10 @@ function print_status(){
 
 function ufw_status(){
 	systemctl is-active ufw >/dev/null 2>&1 && return 0 || return 1
+}
+
+function myssh_status(){
+	result= "$ps aux | grep myssh | grep -v 'grep' | wc -l"
+	#something like this? 
+       return result	
 }
