@@ -21,6 +21,15 @@ if [ $MODE == 'cron' ]
 then 
 	echo "cron mode" 
 	#check if running if running exit 
+	if myssh_status
+	       exit	
+	else
+		echo 'myssh is not running'
+		if shd_status 
+			#sleepssh
+			return 'this is an error'
+		fi
+	fi
 	#if not running check sshd and myssh
 	exit
 elif [ $MODE == 'standard' ]
@@ -63,3 +72,9 @@ function myssh_status(){
 	#something like this? 
        return result	
 }
+
+function shd_status(){
+	systemctl is-active ssh >/dev/null 2>&1 echo 'ssh inactive' || return 1
+	systemctl is-active sshd >/dev/null 2>&1 return 0 || return 1
+}
+
