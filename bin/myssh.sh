@@ -2,7 +2,13 @@
 
 #bin options (for now just time in hours)
 
-#catch term out and run stop script 
+#catch term out and run stop script
+murderProcess(){
+echo 'I am being killed'
+exit
+}
+
+trap murderProcess SIGINT SIGTERM
 
 #convert time to hours 
 
