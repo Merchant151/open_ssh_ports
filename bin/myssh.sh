@@ -9,6 +9,12 @@ while getopts ":ht:" option; do
 		t)
 			echo "option time set to $OPTARG hours" 
 			TIME=$OPTARG
+			re='^[0-9+$]' #regular expression has to be separate line for proper interpretation
+			if ! [[ $TIME =~ $re ]] ; then
+				echo $TIME
+				echo 'error option t not a valid number'
+				exit 1
+			fi 
 		esac
 	done
 
