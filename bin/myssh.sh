@@ -1,3 +1,4 @@
+#!/bin/bash
 #shibang 
 TIME=1
 #bin options (for now just time in hours)
@@ -9,9 +10,9 @@ while getopts ":ht:" option; do
 		t)
 			echo "option time set to $OPTARG hours" 
 			TIME=$OPTARG
-			re='^[0-9+$]' #regular expression has to be separate line for proper interpretation
+			re='^[0-9]+$' #regular expression has to be separate line for proper interpretation
 			if ! [[ $TIME =~ $re ]] ; then
-				echo $TIME
+				#echo $TIME
 				echo 'error option t not a valid number'
 				exit 1
 			fi 
@@ -36,6 +37,8 @@ exit
 trap murderProcess SIGINT SIGTERM
 
 #convert time to hours 
+      #hiding sleep time to test in minutes for testing purposes
+#SLEEP_TIME=$((TIME * 3600))
 #check if time is an int or throw error 
 echo running for $TIME hours
 #run sauron
@@ -43,4 +46,5 @@ echo running for $TIME hours
 #run start script 
 
 #sleep for number of hours 
+sleep $"SLEEP_TIME"
 #run end script 
