@@ -48,3 +48,7 @@ echo running for $TIME hours
 #sleep for number of hours 
 sleep $"SLEEP_TIME"
 #run end script 
+#todo turn this into a method and send results to .log file
+./sleepssh.sh
+ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
+ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
