@@ -43,7 +43,11 @@ trap murderProcess SIGINT SIGTERM
 echo running for $TIME hours
 #run sauron
 #run sentry
+./sentry.sh
+./sauron.sh
 #run start script 
+./wakessh.sh 
+
 
 #sleep for number of hours 
 sleep $"SLEEP_TIME"
