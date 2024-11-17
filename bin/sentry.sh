@@ -38,7 +38,14 @@ then
 	#check if myssh is active 
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
+		#TODO Heartbeat log i am working
 		pass
+	else 
+		#TODO log error of myssh inactive during standard mode
+		./sleepssh
+		ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
+		#TODO log sleeped and exiting standard mode
+		exit
 	fi
 
 	#check if sshd is active 
