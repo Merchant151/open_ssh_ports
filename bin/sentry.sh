@@ -36,6 +36,11 @@ elif [ $MODE == 'standard' ]
 then 
 	echo 'standard mode'
 	#check if myssh is active 
+	if ps aux|grep -v grep|grep myssh.sh > /dev/null
+	then
+		pass
+	fi
+
 	#check if sshd is active 
 	#if sshd is active but myssh is inactive 
 	#log issue and kill everything close ports
