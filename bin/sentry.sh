@@ -22,7 +22,10 @@ then
 	echo "cron mode" 
 	#check if running if running exit 
 	if myssh_status
-	       exit	
+	then
+		#TODO LOG CHRON RUN
+		
+		exit	
 	else
 		echo 'myssh is not running'
 		if shd_status 
@@ -34,7 +37,12 @@ then
 	exit
 elif [ $MODE == 'standard' ]
 then 
+	#check if sshd is active 
+	#if sshd is active but myssh is inactive 
+	#log issue and kill everything close ports
 	echo 'standard mode'
+	while true 
+	do 
 	#check if myssh is active 
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
@@ -48,11 +56,6 @@ then
 		exit
 	fi
 
-	#check if sshd is active 
-	#if sshd is active but myssh is inactive 
-	#log issue and kill everything close ports
-	while true 
-	do 
 		sleep 5m
 
 	done
