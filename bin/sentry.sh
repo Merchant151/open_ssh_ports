@@ -21,16 +21,18 @@ if [ $MODE == 'cron' ]
 then 
 	echo "cron mode" 
 	#check if running if running exit 
-	if myssh_status
+	#TODO LOG CRON MODE 
+	if ps aux |grep -v grep|grep myssh.sh > /dev/null
 	then
-		#TODO LOG CHRON RUN
+		#TODO LOG DURRING CHRON RUN myssh is cur running
 		
 		exit	
 	else
+		#TODO TURN THIS INTO A LOG
 		echo 'myssh is not running'
 		if shd_status 
-			#sleepssh
-			return 'this is an error'
+			./sleepssh.sh
+			#TODO log ssh running without myssh
 		fi
 	fi
 	#if not running check sshd and myssh
