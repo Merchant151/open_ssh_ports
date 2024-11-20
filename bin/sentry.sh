@@ -22,15 +22,16 @@ then
 	echo "cron mode" 
 	#check if running if running exit 
 	#TODO LOG CRON MODE 
-	if ps aux |grep -v grep|grep myssh.sh > /dev/null
+	if ps aux |grep -v grep|grep -q myssh.sh || shd_status 
 	then
-		#TODO LOG DURRING CHRON RUN myssh is cur running
+		#TODO LOG DURRING CRON RUN myssh is cur running
 		
 		exit	
 	else
 		#TODO TURN THIS INTO A LOG
 		echo 'myssh is not running'
 		if shd_status 
+			then
 			./sleepssh.sh
 			#TODO log ssh running without myssh
 		fi
@@ -91,7 +92,7 @@ function myssh_status(){
 }
 
 function shd_status(){
-	systemctl is-active ssh >/dev/null 2>&1 echo 'ssh inactive' || return 1
-	systemctl is-active sshd >/dev/null 2>&1 return 0 || return 1
+	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
+	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
 }
 
