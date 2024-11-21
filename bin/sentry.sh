@@ -22,7 +22,7 @@ then
 	echo "cron mode" 
 	#check if running if running exit 
 	#TODO LOG CRON MODE 
-	if ps aux |grep -v grep|grep -q myssh.sh || shd_status 
+	if ps aux |grep -v grep|grep -q myssh.sh 
 	then
 		#TODO LOG DURRING CRON RUN myssh is cur running
 		
@@ -69,7 +69,7 @@ else
 fi
 
 
-print_status
+#print_status
 
 
 function print_status(){

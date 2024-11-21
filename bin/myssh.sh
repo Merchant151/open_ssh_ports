@@ -56,3 +56,4 @@ sleep $"SLEEP_TIME"
 ./sleepssh.sh
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
+exit
