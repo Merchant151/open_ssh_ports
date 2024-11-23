@@ -67,7 +67,7 @@ For the purposes of this project. I will only be opening SSH to myself over my l
 
 [ ] I will monitor all active connections from the host. 
 
-[ ] I will consider using SSH keys instead of password connection. 
+[X] I will consider using SSH keys instead of password connection. 
 
 ### Steps 
 
