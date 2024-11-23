@@ -2,31 +2,9 @@
 #shibang 
 TIME=0
 #bin options (for now just time in hours)
-while getopts ":ht:" option; do
-	case $option in 
-		h)
-			usage
-			exit;;
-		t)
-			echo "option time set to $OPTARG hours" 
-			TIME=$OPTARG
-			re='^[0-9]+$' #regular expression has to be separate line for proper interpretation
-			if ! [[ $TIME =~ $re ]] ; then
-				#echo $TIME
-				echo 'error option t not a valid number'
-				exit 1
-			fi 
-			main
-			;;
-		\?)
-			echo 'incorrect option selected'
-			usage
-			exit;;
-		esac
-	done
 
 #help option
-usasge(){
+usage(){
 	#The purpose of this script
 	#options of this script include
 	#-h show script usage
@@ -65,3 +43,44 @@ ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
 }
+test(){
+echo 'running for test'
+
+}
+
+while getopts ":ht:" option; do
+	case $option in 
+		h)
+			usage
+			exit;;
+		t)
+			echo "option time set to $OPTARG hours" 
+			TIME=$OPTARG
+			re='^[0-9]+$' #regular expression has to be separate line for proper interpretation
+			if ! [[ $TIME =~ $re ]] ; then
+				#echo $TIME
+				echo 'error option t not a valid number'
+				exit 1
+			fi 
+			#main
+			test
+			;;
+		\?)
+			echo 'incorrect option selected'
+			usage
+			exit;;
+		:)
+			echo 'no options selected'
+			usage
+			exit;;
+		esac
+	done
+
+if [ $# -eq 0 ]; then 
+	echo "No args passed"
+	usage
+	exit
+fi 
+
+
+
