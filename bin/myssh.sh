@@ -1,6 +1,6 @@
 #!/bin/bash
 #shibang 
-TIME=1
+TIME=0
 #bin options (for now just time in hours)
 while getopts ":ht:" option; do
 	case $option in 
@@ -16,6 +16,12 @@ while getopts ":ht:" option; do
 				echo 'error option t not a valid number'
 				exit 1
 			fi 
+			main
+			;;
+		\?)
+			echo 'incorrect option selected'
+			usage
+			exit;;
 		esac
 	done
 
@@ -36,6 +42,7 @@ exit
 
 trap murderProcess SIGINT SIGTERM
 
+main(){
 #convert time to hours 
       #hiding sleep time to test in minutes for testing purposes
 #SLEEP_TIME=$((TIME * 3600))
@@ -57,3 +64,4 @@ sleep $"SLEEP_TIME"
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
+}
