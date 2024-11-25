@@ -50,6 +50,8 @@ then
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
 		#TODO Heartbeat log i am working
+		D=date
+		echo 'Heartbeat at $D'>> ../logs/sentry.log
 		pass
 	else 
 		#TODO log error of myssh inactive during standard mode
