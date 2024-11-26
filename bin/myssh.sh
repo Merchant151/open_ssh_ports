@@ -9,7 +9,12 @@ usage(){
 	#options of this script include
 	#-h show script usage
 	# others 
-	echo 'none'	
+	echo '--------------'
+	echo 'myssh.sh is the entrypoint for Marts OpenSSH project. Run myssh to open ports and activate sshd'
+	echo 'options:' 
+	echo '     -t time to run option'
+	echo '     -h help function'
+
 }
 
 #catch term out and run stop script
