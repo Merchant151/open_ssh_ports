@@ -15,7 +15,7 @@ usage(){
 	echo '     -t time to run option'
 	echo '     -h help function'
 	echo ' usage> myssh.sh -t 1' 
-	echo ' to run for one hour'
+	echo ' to run the script for one hour'
 
 }
 
@@ -70,7 +70,7 @@ while getopts ":ht:" option; do
 				exit 1
 			fi 
 			#main
-			test
+			#test
 			;;
 		\?)
 			echo 'incorrect option selected'
@@ -87,7 +87,8 @@ if [ $# -eq 0 ]; then
 	echo "No args passed"
 	usage
 	exit
+else 
+	test
+	main
 fi 
-
-
 
