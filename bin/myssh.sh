@@ -14,6 +14,8 @@ usage(){
 	echo 'options:' 
 	echo '     -t time to run option'
 	echo '     -h help function'
+	echo ' usage> myssh.sh -t 1' 
+	echo ' to run for one hour'
 
 }
 
