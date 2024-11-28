@@ -14,6 +14,9 @@ while getopts ":cs" option; do
 			echo 'standard case'
 			MODE='standard'
 			;;
+		t) 
+			echo 'test mode'
+			MODE='test'
 		esac
 	done
 
@@ -49,6 +52,7 @@ then
 	#check if myssh is active 
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
+		#TODO change all ../ to use a paramterized location likely $dirname $0 in all program files
 		#TODO Heartbeat log i am working
 		D=date
 		echo 'Heartbeat at $D'>> ../logs/sentry.log
@@ -64,6 +68,10 @@ then
 		sleep 5m
 
 	done
+	exit
+elif [ $MODE == 'test' ]
+then 
+	echo 'started in test mode' 
 	exit
 else
 	echo 'no mode selected'

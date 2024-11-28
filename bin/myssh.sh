@@ -28,6 +28,9 @@ exit
 trap murderProcess SIGINT SIGTERM
 
 main(){
+echo '---------------------'
+echo WARNING SSH Ports will be opened and FIREWALL rules will be modified make sure you know what you are doing!
+echo '---------------------'
 #convert time to hours 
       #hiding sleep time to test in minutes for testing purposes
 #SLEEP_TIME=$((TIME * 3600))
@@ -35,11 +38,14 @@ main(){
 echo running for $TIME hours
 #run sauron
 #run sentry
-./sentry.sh
+./sentry.sh -t
+#TODO switch to s mode and comment out t mode 
+#./sentry.sh -s 
 ./sauron.sh
 #run start script 
-./wakessh.sh 
-
+#TODO actualy wake
+echo 'pretending to wake'
+#./wakessh.sh 
 
 #sleep for number of hours 
 sleep $"SLEEP_TIME"
@@ -89,6 +95,6 @@ if [ $# -eq 0 ]; then
 	exit
 else 
 	test
-	main
+	#main
 fi 
 
