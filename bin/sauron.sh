@@ -6,17 +6,19 @@ while getopts ":h" option; do
 	case $option in 
 		h) 
 			echo 'help option'
+			echo 'There are no options becides help'
+			echo 'the purpose of this script is to log ssh activity it is automatically started and killed by myssh.sh'
 			exit;;
 		esac
 	done
-if [ $OPTIND -eq 1 ]; then echo "No options passed" && exit; fi
+#if [ $OPTIND -eq 1 ]; then echo "No options passed" && exit; fi
 murderProcesses(){
    echo "ending bg process" 
    kill -9 $PID1 $PID2 $PID3
    #add 2>/dev/null if want to suppress output here
    echo -n '<Sauron LOG> ' >> ../logs/sauron.log 
-   LOG_TIME=DATE
-   echo -n '$LOG_TIME ' >> ../logs/sauron.log
+   LOG_TIME=date
+   echo -n "$LOG_TIME " >> ../logs/sauron.log
    echo ': I am being murdered! killing processes' >> ../logs/sauron.log
    exit
 }
@@ -38,4 +40,12 @@ PID2=$!
 tail -vf /var/log/ufw.log | awk 'BEGIN{p="ufw.log"} {print p,$0}' >> ../logs/sauron.log & 
 PID3=$!
 
-wait
+#wait
+
+while true 
+do
+echo -n `date` >> ../logs/sauron.log 
+echo ' sauron is still running.' >> ../logs/sauron.log
+sleep 1m
+done
+
