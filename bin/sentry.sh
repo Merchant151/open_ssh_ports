@@ -4,7 +4,7 @@
 #Insuring ssh isn't randomly on.
 #this script will also have a separate mode for standard run. It will be activated when mySsh is turned on. 
 MODE='none'
-while getopts ":cs" option; do
+while getopts ":cst" option; do
 	case $option in 
 		c)
 			echo 'cron case'
@@ -55,7 +55,7 @@ then
 		#TODO change all ../ to use a paramterized location likely $dirname $0 in all program files
 		#TODO Heartbeat log i am working
 		D=date
-		echo 'Heartbeat at $D'>> ../logs/sentry.log
+		echo "Heartbeat at $D" >> ../logs/sentry.log
 		pass
 	else 
 		#TODO log error of myssh inactive during standard mode
@@ -71,7 +71,12 @@ then
 	exit
 elif [ $MODE == 'test' ]
 then 
-	echo 'started in test mode' 
+	echo '<SENTRY.sh>started in test mode' 
+	if ps aux|grep -v grep|grep myssh > /dev/null ;then
+		echo '<SENTRY.sh>myssh is currently running'
+	else 
+		echo '<SENTRY.sh>myssh is not running this would result in an error in standard mode'
+	fi
 	exit
 else
 	echo 'no mode selected'

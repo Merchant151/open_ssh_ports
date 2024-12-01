@@ -57,8 +57,8 @@ ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
 }
 test(){
-echo 'running for test'
-
+echo '<MYSSH.sh>running for test'
+./sentry.sh -t 
 }
 
 while getopts ":ht:" option; do
