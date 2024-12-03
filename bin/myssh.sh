@@ -59,6 +59,7 @@ exit
 test(){
 echo '<MYSSH.sh>running for test'
 ./sentry.sh -t 
+./sauron.sh
 }
 
 while getopts ":ht:" option; do
