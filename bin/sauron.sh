@@ -46,6 +46,6 @@ while true
 do
 echo -n `date` >> ../logs/sauron.log 
 echo ' sauron is still running.' >> ../logs/sauron.log
-sleep 1m
+sleep 2m
 done
 

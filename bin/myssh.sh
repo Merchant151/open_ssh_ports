@@ -36,16 +36,13 @@ echo '---------------------'
 #SLEEP_TIME=$((TIME * 3600))
 #check if time is an int or throw error 
 echo running for $TIME hours
-#run sauron
 #run sentry
-./sentry.sh -t
-#TODO switch to s mode and comment out t mode 
-#./sentry.sh -s 
+./sentry.sh -s 
+#run sauron
 ./sauron.sh
 #run start script 
-#TODO actualy wake
 echo 'pretending to wake'
-#./wakessh.sh 
+./wakessh.sh 
 
 #sleep for number of hours 
 sleep $"SLEEP_TIME"
@@ -60,6 +57,13 @@ test(){
 echo '<MYSSH.sh>running for test'
 ./sentry.sh -t 
 ./sauron.sh
+echo '<MYSSH.sh> pretending to wake'
+SLEEP_TIME=$(($TIME * 1))
+echo "<myssh> SLEEP_TIME EQUALS $SLEEP_TIME"
+
+sleep $"SLEEP_TIME"
+ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
+ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 }
 
 while getopts ":ht:" option; do
