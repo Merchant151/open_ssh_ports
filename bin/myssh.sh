@@ -55,8 +55,10 @@ exit
 }
 test(){
 echo '<MYSSH.sh>running for test'
-./sentry.sh -t 
-./sauron.sh
+./sentry.sh -t &  
+./sauron.sh & 
+echo -n 'trying to echo path: '
+echo "$0"
 echo '<MYSSH.sh> pretending to wake'
 SLEEP_TIME=$(($TIME * 1))
 echo "<myssh> SLEEP_TIME EQUALS $SLEEP_TIME"
