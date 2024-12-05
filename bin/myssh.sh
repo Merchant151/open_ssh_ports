@@ -45,7 +45,7 @@ echo 'pretending to wake'
 ./wakessh.sh 
 
 #sleep for number of hours 
-sleep $"SLEEP_TIME"
+sleep $SLEEP_TIME
 #run end script 
 #todo turn this into a method and send results to .log file
 ./sleepssh.sh
@@ -58,12 +58,18 @@ echo '<MYSSH.sh>running for test'
 ./sentry.sh -t &  
 ./sauron.sh & 
 echo -n 'trying to echo path: '
-echo "$0"
+echo "$(dirname $0)"
+echo '' #adding new line
+echo -n 'trying to echo pwd:'
+cd "$(dirname "$0")"
+SCRIPT_DIR="$(pwd)"
+echo "SCRIPT DIRECTORY : $SCRIPT_DIR"
+
 echo '<MYSSH.sh> pretending to wake'
 SLEEP_TIME=$(($TIME * 1))
 echo "<myssh> SLEEP_TIME EQUALS $SLEEP_TIME"
 
-sleep $"SLEEP_TIME"
+sleep $SLEEP_TIME
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 }

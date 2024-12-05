@@ -28,8 +28,11 @@ trap murderProcesses SIGINT SIGTERM
 #There are multiple logs I would like to follow from the var/log 
 echo -n '<fail log>'
 tail -1 /var/log/fail2ban.log
+echo ''
 echo -n '<auth log>' && tail -1 /var/log/auth.log
+echo ''
 echo -n '<ufw log>' && tail -1 /var/log/ufw.log
+echo ''
 
 #I will likely need to use a while loop on a read command to only update when changes happen and then tail the file with those changes
 
