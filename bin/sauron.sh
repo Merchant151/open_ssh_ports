@@ -1,6 +1,7 @@
 #!/bin/bash
 #My goal for this script is to create a standalone logger  that while running will send data to a local log and will also tail that log
-
+sleep 5s 
+echo '<sauron> starting sauron logger'
 #adding basic option handling
 while getopts ":h" option; do 
 	case $option in 
@@ -13,8 +14,8 @@ while getopts ":h" option; do
 	done
 #if [ $OPTIND -eq 1 ]; then echo "No options passed" && exit; fi
 murderProcesses(){
-   echo "ending bg process" 
-   kill -9 $PID1 $PID2 $PID3
+   echo "<Sauron> ending bg process" 
+   kill $PID1 $PID2 $PID3
    #add 2>/dev/null if want to suppress output here
    echo -n '<Sauron LOG> ' >> ../logs/sauron.log 
    LOG_TIME=date
@@ -26,8 +27,7 @@ murderProcesses(){
 trap murderProcesses SIGINT SIGTERM
 
 #There are multiple logs I would like to follow from the var/log 
-echo -n '<fail log>'
-tail -1 /var/log/fail2ban.log
+echo -n '<fail log>' && tail -1 /var/log/fail2ban.log
 echo ''
 echo -n '<auth log>' && tail -1 /var/log/auth.log
 echo ''

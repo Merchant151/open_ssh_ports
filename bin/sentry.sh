@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sleep 10s
 #my goal for this script is to be run every hour in cron mode just to check on ssh status 
 #Insuring ssh isn't randomly on.
 #this script will also have a separate mode for standard run. It will be activated when mySsh is turned on. 
