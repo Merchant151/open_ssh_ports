@@ -2,6 +2,8 @@
 #shibang 
 TIME=0
 #bin options (for now just time in hours)
+cd "$(dirname "$0")"
+SCRIPT_DIR="$(pwd)"
 
 #help option
 usage(){
@@ -60,9 +62,7 @@ echo '<MYSSH.sh>running for test'
 echo -n 'trying to echo path: '
 echo "$(dirname $0)"
 echo '' #adding new line
-echo -n 'trying to echo pwd:'
-cd "$(dirname "$0")"
-SCRIPT_DIR="$(pwd)"
+#echo -n 'trying to echo pwd:'
 echo "SCRIPT DIRECTORY : $SCRIPT_DIR"
 
 echo '<MYSSH.sh> pretending to wake'
