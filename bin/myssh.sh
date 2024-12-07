@@ -1,5 +1,4 @@
 #!/bin/bash
-#shibang 
 TIME=0
 #bin options (for now just time in hours)
 cd "$(dirname "$0")"
@@ -23,7 +22,10 @@ usage(){
 
 #catch term out and run stop script
 murderProcess(){
-echo 'I am being killed'
+echo '<myssh> I am being untimely killed'
+./sleepssh.sh
+ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
+ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
 }
 
@@ -34,22 +36,21 @@ echo '---------------------'
 echo WARNING SSH Ports will be opened and FIREWALL rules will be modified make sure you know what you are doing!
 echo '---------------------'
 #convert time to hours 
-      #hiding sleep time to test in minutes for testing purposes
-#SLEEP_TIME=$((TIME * 3600))
-#check if time is an int or throw error 
-echo running for $TIME hours
+SLEEP_TIME=$((TIME * 3600))
+echo "running for $TIME hours"
 #run sentry
-./sentry.sh -s 
-#run sauron
-./sauron.sh
+./sentry.sh -s & 
+#run sauron 
+./sauron.sh & 
 #run start script 
-echo 'pretending to wake'
+echo '<myssh.sh> RUNNING WAKE'
 ./wakessh.sh 
 
 #sleep for number of hours 
 sleep $SLEEP_TIME
 #run end script 
 #todo turn this into a method and send results to .log file
+echo '<myssh.sh> trying to sleepssh and kill sentry/sauron scripts'
 ./sleepssh.sh
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
@@ -62,7 +63,6 @@ echo '<MYSSH.sh>running for test'
 echo -n 'trying to echo path: '
 echo "$(dirname $0)"
 echo '' #adding new line
-#echo -n 'trying to echo pwd:'
 echo "SCRIPT DIRECTORY : $SCRIPT_DIR"
 
 echo '<MYSSH.sh> pretending to wake'
