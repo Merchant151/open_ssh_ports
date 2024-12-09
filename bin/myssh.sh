@@ -3,6 +3,8 @@ TIME=0
 #bin options (for now just time in hours)
 cd "$(dirname "$0")"
 SCRIPT_DIR="$(pwd)"
+#running as root for now since I am configuring system processes hope this doesn't create issues
+sudo su
 
 #help option
 usage(){
