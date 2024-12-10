@@ -22,8 +22,11 @@ while getopts ":cst" option; do
 	done
 
 if [ $MODE == 'cron' ]
-then 
-	echo "cron mode" 
+then
+	cd "$(dirname "0")"
+	D=date
+	echo "cron mode running at $D" >> ../logs/sentry.log
+	
 	#check if running if running exit 
 	#TODO LOG CRON MODE 
 	if ps aux |grep -v grep|grep -q myssh.sh 
@@ -38,6 +41,9 @@ then
 			then
 			./sleepssh.sh
 			#TODO log ssh running without myssh
+			D=date
+			echo "Critical Failure ssh at $D status active myssh is not" >> ../logs/sentry.log
+
 		fi
 	fi
 	#if not running check sshd and myssh
@@ -54,7 +60,6 @@ then
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
 		#TODO change all ../ to use a paramterized location likely $dirname $0 in all program files
-		#TODO Heartbeat log i am working
 		D=date
 		echo "Heartbeat at $D" >> ../logs/sentry.log
 		pass
