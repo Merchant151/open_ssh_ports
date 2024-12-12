@@ -28,25 +28,20 @@ then
 	echo "cron mode running at $D" >> ../logs/sentry.log
 	
 	#check if running if running exit 
-	#TODO LOG CRON MODE 
 	if ps aux |grep -v grep|grep -q myssh.sh 
 	then
-		#TODO LOG DURRING CRON RUN myssh is cur running
-		
+		echo "durring cron run discovered myssh is running" >> ../logs/sentry.log	
 		exit	
 	else
-		#TODO TURN THIS INTO A LOG
-		echo 'myssh is not running'
+		echo 'myssh is not running' >> ../logs/sentry.log
 		if shd_status 
 			then
-			./sleepssh.sh
-			#TODO log ssh running without myssh
+			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
 			D=date
 			echo "Critical Failure ssh at $D status active myssh is not" >> ../logs/sentry.log
 
 		fi
 	fi
-	#if not running check sshd and myssh
 	exit
 elif [ $MODE == 'standard' ]
 then 
@@ -59,15 +54,16 @@ then
 	#check if myssh is active 
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
-		#TODO change all ../ to use a paramterized location likely $dirname $0 in all program files
 		D=date
 		echo "Heartbeat at $D" >> ../logs/sentry.log
 		pass
 	else 
-		#TODO log error of myssh inactive during standard mode
+		D=date
+		echo "$D myssh is now showing as active Sentry executing sleep!" >> ../logs/sentry.log
 		./sleepssh
 		ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
-		#TODO log sleeped and exiting standard mode
+		D=date
+		echo "<SENTRY> $D sleeped and exiting" >> ../logs/sauron.log
 		exit
 	fi
 
