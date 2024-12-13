@@ -85,9 +85,7 @@ else
 	exit	
 fi
 
-
 #print_status
-
 
 function print_status(){
 	#include print status output
@@ -96,7 +94,6 @@ function print_status(){
 	systemctl status ssh
 	systemctl status sshd
 }
-
 
 function ufw_status(){
 	systemctl is-active ufw >/dev/null 2>&1 && return 0 || return 1
