@@ -23,9 +23,13 @@ while getopts ":cst" option; do
 
 if [ $MODE == 'cron' ]
 then
-	cd "$(dirname "0")"
-	D=date
-	echo "cron mode running at $D" >> ../logs/sentry.log
+	B=$(pwd)
+	bash -c "cd "$(dirname "0")""
+	D=$(date)
+	P=$(pwd)
+	echo "cron mode running at $D" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
+	echo "cron mode running with working directory $P (after)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
+	echo "cron mode running with working directory $B (before)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
 	
 	#check if running if running exit 
 	if ps aux |grep -v grep|grep -q myssh.sh 
@@ -37,7 +41,7 @@ then
 		if shd_status 
 			then
 			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
-			D=date
+			D=$(date)
 			echo "Critical Failure ssh at $D status active myssh is not" >> ../logs/sentry.log
 
 		fi
@@ -54,15 +58,15 @@ then
 	#check if myssh is active 
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
-		D=date
+		D=$(date)
 		echo "Heartbeat at $D" >> ../logs/sentry.log
 		pass
 	else 
-		D=date
+		D=$(date)
 		echo "$D myssh is now showing as active Sentry executing sleep!" >> ../logs/sentry.log
 		./sleepssh
 		ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
-		D=date
+		D=$(date)
 		echo "<SENTRY> $D sleeped and exiting" >> ../logs/sauron.log
 		exit
 	fi

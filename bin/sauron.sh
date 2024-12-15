@@ -18,7 +18,7 @@ murderProcesses(){
    kill $PID1 $PID2 $PID3
    #add 2>/dev/null if want to suppress output here
    echo -n '<Sauron LOG> ' >> ../logs/sauron.log 
-   LOG_TIME=date
+   LOG_TIME=$(date)
    echo -n "$LOG_TIME " >> ../logs/sauron.log
    echo ': I am being murdered! killing processes' >> ../logs/sauron.log
    exit
