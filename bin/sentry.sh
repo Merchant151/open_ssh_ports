@@ -27,24 +27,23 @@ then
 	bash -c "cd "$(dirname "0")""
 	D=$(date)
 	P=$(pwd)
-	PARAM=$(dirname "$0")
-	echo "cron mode running at $D" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
-	echo "cron mode running with working directory $P (after)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
-	echo "cron mode running with working directory $B (before)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
-	echo "directory gather param test= $PARAM" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
+	LOGDIR=$(dirname "$0")/../logs
+	echo "cron mode running at $D" >> $LOGDIR/sentry.log
+	echo "cron mode running with working directory $P" >> $LOGDIR/sentry.log
+	echo "directory gather param test= $LOGDIR" >>$LOGDIR/sentry.log 
 	
 	#check if running if running exit 
 	if ps aux |grep -v grep|grep -q myssh.sh 
 	then
-		echo "durring cron run discovered myssh is running" >> ../logs/sentry.log	
+		echo "durring cron run discovered myssh is running" >> $LOGDIR/sentry.log	
 		exit	
 	else
-		echo 'myssh is not running' >> ../logs/sentry.log
+		echo 'myssh is not running' >> $LOGDIR/sentry.log
 		if shd_status 
 			then
 			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
 			D=$(date)
-			echo "Critical Failure ssh at $D status active myssh is not" >> ../logs/sentry.log
+			echo "Critical Failure ssh at $D status active myssh is not" >> $LOGDIR/sentry.log
 
 		fi
 	fi
@@ -61,15 +60,15 @@ then
 	if ps aux|grep -v grep|grep myssh.sh > /dev/null
 	then
 		D=$(date)
-		echo "Heartbeat at $D" >> ../logs/sentry.log
+		echo "Heartbeat at $D" >> $LOGDIR/sentry.log
 		pass
 	else 
 		D=$(date)
-		echo "$D myssh is now showing as active Sentry executing sleep!" >> ../logs/sentry.log
+		echo "$D myssh is now showing as active Sentry executing sleep!" >> $LOGDIR/sentry.log
 		./sleepssh
 		ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 		D=$(date)
-		echo "<SENTRY> $D sleeped and exiting" >> ../logs/sauron.log
+		echo "<SENTRY> $D sleeped and exiting" >> $LOGDIR/sauron.log
 		exit
 	fi
 
