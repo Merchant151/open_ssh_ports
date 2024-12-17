@@ -27,9 +27,11 @@ then
 	bash -c "cd "$(dirname "0")""
 	D=$(date)
 	P=$(pwd)
+	PARAM=$(dirname "$0")
 	echo "cron mode running at $D" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
 	echo "cron mode running with working directory $P (after)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
 	echo "cron mode running with working directory $B (before)" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
+	echo "directory gather param test= $PARAM" >> /home/merchant/Documents/projects/git/ssh/open_ssh_ports/logs/sentry.log
 	
 	#check if running if running exit 
 	if ps aux |grep -v grep|grep -q myssh.sh 
