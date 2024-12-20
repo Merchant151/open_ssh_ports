@@ -5,6 +5,7 @@ sleep 10s
 #Insuring ssh isn't randomly on.
 #this script will also have a separate mode for standard run. It will be activated when mySsh is turned on. 
 MODE='none'
+LOGDIR=$(dirname "$0")/../logs
 while getopts ":cst" option; do
 	case $option in 
 		c)
@@ -27,7 +28,6 @@ then
 	#bash -c "cd "$(dirname "0")"" do not need this line
 	D=$(date)
 	P=$(pwd)
-	LOGDIR=$(dirname "$0")/../logs
 	echo "cron mode running at $D" >> $LOGDIR/sentry.log
 	echo "cron mode running with working directory $P" >> $LOGDIR/sentry.log
 	echo "directory gather param test= $LOGDIR" >>$LOGDIR/sentry.log 
