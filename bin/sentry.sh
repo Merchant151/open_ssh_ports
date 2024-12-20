@@ -24,7 +24,7 @@ while getopts ":cst" option; do
 if [ $MODE == 'cron' ]
 then
 	B=$(pwd)
-	bash -c "cd "$(dirname "0")""
+	#bash -c "cd "$(dirname "0")"" do not need this line
 	D=$(date)
 	P=$(pwd)
 	LOGDIR=$(dirname "$0")/../logs
@@ -35,7 +35,8 @@ then
 	#check if running if running exit 
 	if ps aux |grep -v grep|grep -q myssh.sh 
 	then
-		echo "durring cron run discovered myssh is running" >> $LOGDIR/sentry.log	
+		echo -n "durring cron run discovered myssh is running" >> $LOGDIR/sentry.log	
+		ps aux | grep -v grep|grep myssh.sh >> $LOGDIR/sentry.log  
 		exit	
 	else
 		echo 'myssh is not running' >> $LOGDIR/sentry.log
