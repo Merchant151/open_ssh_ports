@@ -46,6 +46,10 @@ then
 			D=$(date)
 			echo "Critical Failure ssh at $D status active myssh is not" >> $LOGDIR/sentry.log
 
+		else 
+			D=$(date)
+			echo "shd_status result inactive at $D Goodbye" >> $LOGDIR/sentry.log
+			echo "========================================" >> $LOGDIR/sentry.log
 		fi
 	fi
 	exit
@@ -112,6 +116,8 @@ function myssh_status(){
 }
 
 function shd_status(){
+	#DEBUG TESTING
+	systemctl is-active ssh >> $LOGDIR/sauron.log
 	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
 	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
 }
