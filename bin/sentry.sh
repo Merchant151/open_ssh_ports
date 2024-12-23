@@ -117,6 +117,7 @@ function myssh_status(){
 
 function shd_status(){
 	#DEBUG TESTING
+	echo 'shd is running!' >> $LOGDIR/sauron.log
 	systemctl is-active ssh >> $LOGDIR/sauron.log
 	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
 	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
