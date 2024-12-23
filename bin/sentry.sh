@@ -40,7 +40,7 @@ then
 		exit	
 	else
 		echo 'myssh is not running' >> $LOGDIR/sentry.log
-		if shd_status 
+		if shd_status; 
 			then
 			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
 			D=$(date)
