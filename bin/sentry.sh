@@ -73,7 +73,7 @@ then
 		./sleepssh
 		ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 		D=$(date)
-		echo "<SENTRY> $D sleeped and exiting" >> $LOGDIR/sauron.log
+		echo "<SENTRY> $D sleeped and exiting" >> $LOGDIR/sentry.log
 		exit
 	fi
 
@@ -117,8 +117,8 @@ function myssh_status(){
 
 function shd_status(){
 	#DEBUG TESTING
-	echo 'shd is running!' >> $LOGDIR/sauron.log
-	systemctl is-active ssh >> $LOGDIR/sauron.log
+	echo 'shd is running!' >> $LOGDIR/sentry.log
+	systemctl is-active ssh >> $LOGDIR/sentry.log
 	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
 	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
 }
