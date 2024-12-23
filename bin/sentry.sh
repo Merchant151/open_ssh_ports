@@ -6,6 +6,33 @@ sleep 10s
 #this script will also have a separate mode for standard run. It will be activated when mySsh is turned on. 
 MODE='none'
 LOGDIR=$(dirname "$0")/../logs
+
+function print_status(){
+	#include print status output
+	systemctl status ufw 
+	systemctl status fail2ban
+	systemctl status ssh
+	systemctl status sshd
+}
+
+function ufw_status(){
+	systemctl is-active ufw >/dev/null 2>&1 && return 0 || return 1
+}
+
+function myssh_status(){
+	result= "$ps aux | grep myssh | grep -v 'grep' | wc -l"
+	#something like this? 
+       return result	
+}
+
+function shd_status(){
+	#DEBUG TESTING
+	echo 'shd is running!' >> $LOGDIR/sentry.log
+	systemctl is-active ssh >> $LOGDIR/sentry.log
+	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
+	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
+}
+
 while getopts ":cst" option; do
 	case $option in 
 		c)
@@ -97,29 +124,4 @@ fi
 
 #print_status
 
-function print_status(){
-	#include print status output
-	systemctl status ufw 
-	systemctl status fail2ban
-	systemctl status ssh
-	systemctl status sshd
-}
-
-function ufw_status(){
-	systemctl is-active ufw >/dev/null 2>&1 && return 0 || return 1
-}
-
-function myssh_status(){
-	result= "$ps aux | grep myssh | grep -v 'grep' | wc -l"
-	#something like this? 
-       return result	
-}
-
-function shd_status(){
-	#DEBUG TESTING
-	echo 'shd is running!' >> $LOGDIR/sentry.log
-	systemctl is-active ssh >> $LOGDIR/sentry.log
-	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
-	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
-}
 
