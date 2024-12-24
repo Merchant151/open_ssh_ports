@@ -29,6 +29,7 @@ function shd_status(){
 	#DEBUG TESTING
 	echo 'shd is running!' >> $LOGDIR/sentry.log
 	systemctl is-active ssh >> $LOGDIR/sentry.log
+	systemctl is-active ssh && echo 'logging ssh as active' >> $LOGDIR/sentry.log|| echo 'logging ssh as active' >> $LOGDIR/sentry.log
 	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
 	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
 }
