@@ -26,26 +26,27 @@ function myssh_status(){
 }
 
 function shd_status(){
+	#return 1 
 	#DEBUG TESTING
 	echo 'checking ssh and sshd status...' >> $LOGDIR/sentry.log
 	systemctl is-active ssh >> $LOGDIR/sentry.log
 	systemctl is-active ssh && echo 'logging ssh as active' >> $LOGDIR/sentry.log|| echo 'logging ssh as inactive??' >> $LOGDIR/sentry.log
-	systemctl is-active ssh >/dev/null 2>&1 && echo 'ssh inactive' || return 1
-	systemctl is-active sshd >/dev/null 2>&1 && return 0 || return 1
+	systemctl is-active ssh && return 0 || return 1
+	systemctl is-active sshd  && return 0 || return 1
 }
 
 while getopts ":cst" option; do
 	case $option in 
 		c)
-			echo 'cron case'
+			#echo 'cron case'
 			MODE='cron'
 			;;
 		s)
-			echo 'standard case'
+			#echo 'standard case'
 			MODE='standard'
 			;;
 		t) 
-			echo 'test mode'
+			#echo 'test mode'
 			MODE='test'
 		esac
 	done
@@ -69,7 +70,8 @@ then
 	else
 		echo 'myssh is not running' >> $LOGDIR/sentry.log
 		#ANOTHER DEBUG REMOVE BELOW
-		echo "result of shd_status is: $(shd_status)" >> $LOGDIR/sentry.log
+		#echo "result of shd_status is: $(shd_status)" >> $LOGDIR/sentry.log
+		#echo "return code of shd_status is: $?" >> $LOGDIR/sentry.log
 		if shd_status; 
 			then
 			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
