@@ -1,6 +1,6 @@
 #stoping and reseting firewall
 D=$(date)
-LOGFILE=$(dirname "$0")../logs/sleepssh.log
+LOGFILE=$(dirname "$0")/../logs/sleepssh.log
 echo "sleepssh was activated at $D"
 systemctl stop ssh
 echo "RESULT OF STOP SSH is $?" >> $LOGFILE
