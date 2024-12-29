@@ -6,7 +6,7 @@ sleep 10s
 #this script will also have a separate mode for standard run. It will be activated when mySsh is turned on. 
 MODE='none'
 LOGDIR=$(dirname "$0")/../logs
-
+BINDIR=$(dirname "$0")
 function print_status(){
 	#include print status output
 	systemctl status ufw 
@@ -74,7 +74,7 @@ then
 		#echo "return code of shd_status is: $?" >> $LOGDIR/sentry.log
 		if shd_status; 
 			then
-			./sleepssh.sh #this can only be acomplished as root so job must be under root cron 
+			$BINDIR/sleepssh.sh #this can only be acomplished as root so job must be under root cron 
 			D=$(date)
 			echo "Critical Failure ssh at $D status active myssh is not" >> $LOGDIR/sentry.log
 
