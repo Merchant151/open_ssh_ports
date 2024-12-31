@@ -76,7 +76,9 @@ then
 			then
 			$BINDIR/sleepssh.sh #this can only be acomplished as root so job must be under root cron 
 			D=$(date)
-			echo "Critical Failure ssh at $D status active myssh is not" >> $LOGDIR/sentry.log
+			echo "Critical Failure ssh at $D status active myssh is not!" >> $LOGDIR/sentry.log
+			echo "========================================" >> $LOGDIR/sentry.log
+			
 
 		else 
 			D=$(date)
