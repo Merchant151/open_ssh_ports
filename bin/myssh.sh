@@ -109,7 +109,7 @@ if [ $# -eq 0 ]; then
 	usage
 	exit
 else 
-	test
-	#main
+	#test
+	main
 fi 
 
