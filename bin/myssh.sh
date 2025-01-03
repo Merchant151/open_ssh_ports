@@ -1,10 +1,11 @@
 #!/bin/bash
 TIME=0
 #bin options (for now just time in hours)
-cd "$(dirname "$0")"
-SCRIPT_DIR="$(pwd)"
+#cd "$(dirname "$0")"
+#SCRIPT_DIR="$(pwd)"
+SCRIPT_DIR="$(dirname "$0")"
 #running as root for now since I am configuring system processes hope this doesn't create issues
-sudo su
+#sudo su
 
 #help option
 usage(){
@@ -25,7 +26,7 @@ usage(){
 #catch term out and run stop script
 murderProcess(){
 echo '<myssh> I am being untimely killed'
-./sleepssh.sh
+$SCRIPT_DIR/sleepssh.sh
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
@@ -41,27 +42,27 @@ echo '---------------------'
 SLEEP_TIME=$((TIME * 3600))
 echo "running for $TIME hours"
 #run sentry
-./sentry.sh -s & 
+$SCRIPT_DIR/sentry.sh -s & 
 #run sauron 
-./sauron.sh & 
+$SCRIPT_DIR/sauron.sh & 
 #run start script 
 echo '<myssh.sh> RUNNING WAKE'
-./wakessh.sh 
+$SCRIPT_DIR/wakessh.sh 
 
 #sleep for number of hours 
 sleep $SLEEP_TIME
 #run end script 
 #todo turn this into a method and send results to .log file
 echo '<myssh.sh> trying to sleepssh and kill sentry/sauron scripts'
-./sleepssh.sh
+$SCRIPT_DIR/sleepssh.sh
 ps -ef | grep sentry.sh | grep -v grep | awk '{print $2}' | xargs kill
 ps -ef | grep sauron.sh | grep -v grep | awk '{print $2}' | xargs kill
 exit
 }
 test(){
 echo '<MYSSH.sh>running for test'
-./sentry.sh -t &  
-./sauron.sh & 
+$SCRIPT_DIR/sentry.sh -t &  
+$SCRIPT_DIR/sauron.sh & 
 echo -n 'trying to echo path: '
 echo "$(dirname $0)"
 echo '' #adding new line
