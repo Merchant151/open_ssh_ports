@@ -100,7 +100,7 @@ then
 	then
 		D=$(date)
 		echo "Heartbeat at $D" >> $LOGDIR/sentry.log
-		pass
+		#pass pass not found lol
 	else 
 		D=$(date)
 		echo "$D myssh is now showing as active Sentry executing sleep!" >> $LOGDIR/sentry.log
