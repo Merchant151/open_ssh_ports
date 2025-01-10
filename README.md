@@ -65,7 +65,7 @@ For the purposes of this project. I will only be opening SSH to myself over my l
 
 [X] I will use firewall deny rules to prevent un-Authorized connection.
 
-[ ] I will monitor all active connections from the host. 
+[X] I will monitor all active connections from the host. 
 
 [X] I will consider using SSH keys instead of password connection. 
 
@@ -202,9 +202,10 @@ When you are ready to start fail2ban use
 ```bash
 fail2ban-client start
 ```
-Lets say you try to login... and do something wrong... and you need to unban yourself use the following command
 
+### some helpful commands to find and unban ips:  
 ```bash
+$> sudo fail2ban-client status sshd 
 $> sudo fail2ban-client set sshd unbanip 192.168.1.<IP> 
 ```
 
@@ -235,8 +236,29 @@ And change the permissions on the file.
 $> cat ~/{keys} >> ~/.ssh/authorized_keys
 $> chmod 600 ~/.ssh/authorized_keys
 ```
+note insure authorized_keys file contains the text of the public key you will use.
 
 ## connecting via remote
+Connect from the remote by 
+```
+$> ssh {hostuser}@hostIP
+```
+### file transfer over ssh
+scp is a good tool to transfer files over ssh: 
+```
+$> scp ./file_to_remote user@host:/path/to/deliver
+$> scp user@host/path/file_to_local ./
+```
+### troubleshooting
+
+You can try troubleshooting by running ssh -v flag to see where the process fails 
+Make sure ports are open. 
+Auth keys are vailid 
+and specify the private key you wish to use example 
+
+```bash 
+$> ssh -v -i my_key host@hostname
+```
 
 ## When you are done with SSH always deativate and disable it with 
 
