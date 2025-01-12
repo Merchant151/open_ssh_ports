@@ -5,6 +5,3 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 
 
-
-
-
