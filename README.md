@@ -21,16 +21,23 @@ Sections to build
 
 ## Section
 badges -sub section
-## Section
-What is this project?
---why did I build this project?
+## What is this project?
+Open SSH Ports is a set of bash scripts designed to help me quickly operate a secure connection between a host and client.
+
+In my case I am connecting between my desktop and laptop.
+
+So, what do the scripts *do*? They open port 22 and 443 for a specified amount of time. manage the firewall and start extra security measures to ban unauthorized connections. 
+Along with the script. Additionally the scripts monitor ssh while off and insure ssh server is not running while the scripts are not in use. The scripts aggrigate logs within the project logs directory to easily audit SSH activity. 
+
+I am using cron jobs to monitor the ports I will share along with the setup of the project. 
+
 ## Section
 screenshots
-## Section
+## About the Author 
 About the Author 
-## Section
+## Setup
 Setup
-## Section
+## Notes
 I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
 
 You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
