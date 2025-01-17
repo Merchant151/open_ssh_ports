@@ -4,7 +4,7 @@ Temporary open ssh and print open IP with Dynamic DHCP
 Goal of this project have a shell script that opens and closes ssh ports when running. 
 
 
-🚧 This is my README.md this is a work in progress! 🦺 🏗️
+# 🚧 This is my README.md this is a work in progress! 🦺 🏗️
 
 
 <div align="center">
