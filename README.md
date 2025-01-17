@@ -19,11 +19,20 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 Sections to build 
 
+## Section
 badges -sub section
+## Section
 What is this project?
 --why did I build this project?
+## Section
 screenshots
+## Section
 About the Author 
+## Section
 Setup
-notes
-Lincense
+## Section
+I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
+
+You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
+## Lincense 
+Licensed under the MIT License, Copyright (c) 2025 Merchant151
