@@ -136,7 +136,7 @@ I am going to try to use a tool called fail2ban to monitor and track all authent
 I will also use a combination of w who and last to monitor log and track system activity while SSH is enabled! 
 ## Configure fail2ban 
 
-Install fail to ban 
+Install Fail2Ban 
 
 Debian: 
 ```bash
@@ -187,7 +187,7 @@ banaction = ufw
 ```bash
 $> fail2ban-client status
 ```
-use the fail to ban client to check status and unban ips. 
+use the Fail2Ban client to check status and unban ips. 
 
 When you are ready to start fail2ban use 
 
