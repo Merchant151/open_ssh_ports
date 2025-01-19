@@ -31,14 +31,33 @@ Along with the script. Additionally the scripts monitor ssh while off and insure
 
 I am using cron jobs to monitor the ports I will share along with the setup of the project. 
 
-## Section
-screenshots
+### Overview
+
+This repro comes with 5 shell scripts all of wich are used for the project. The repro also contains a bin and log directory which need to remain intact for the scripts to run properly. The dependencies that are needed are not included but I will list them.
+Dependenies:
+ufw - A firewall that can be easily replaced by modifying the scripts to exchange a prefered firewall. ufw typically comes default on deb based systems. 
+Fail2Ban - A tool that will ban unauthorized ips that attempt to connect. 
+systemctl,systemd,ssh/sshd - These dependencies should be a given but I will list them anyway.
+
+Scripts: 
+
+myssh - A script that needs to be run with elivated privleges will run the entire project for a specified amount of time in hours
+sauron - This script takes system logs from the system firewall authenticator and fail2ban and puts them in the repo log directory. With this log you can audit all ssh related activity.
+sentry - This script insures SSH/SSHD is not running unless myssh is active. This script can stop the SSH/SSHD service on its own and requires elivated privleges.  
+sleepssh - The 'sleep' process cancels all firewall rules closes ports and stops the ssh service.    
+wakessh - The 'wake' process creates firewall rules opens ports and starts the serivce. Wake and sleep scripts will need to be configured depending on you connection requirements.
+
+### Setup
+Cronjobs: 
+Setup
+
+### Notes
+I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
+
 ## About the Author 
 Hi, I am Mart Miller. I make small projects to expand my skill set. I am currently interested in learning how to automate and script processes in Shell and Python. 
-## Setup
-Setup
-## Notes
-I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
+
+
 
 You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
 ## Lincense 
