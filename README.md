@@ -34,7 +34,7 @@ I am using cron jobs to monitor the ports I will share along with the setup of t
 ## Section
 screenshots
 ## About the Author 
-About the Author 
+Hi, I am Mart Miller. I make small projects to expand my skill set. I am currently interested in learning how to automate and script processes in Shell and Python. 
 ## Setup
 Setup
 ## Notes
