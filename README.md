@@ -39,7 +39,7 @@ ufw - A firewall that can be easily replaced by modifying the scripts to exchang
 Fail2Ban - A tool that will ban unauthorized ips that attempt to connect. 
 systemctl,systemd,ssh/sshd - These dependencies should be a given but I will list them anyway.
 
-####Scripts: 
+#### Scripts: 
 
 - myssh - A script that needs to be run with elivated privleges will run the entire project for a specified amount of time in hours
 - sauron - This script takes system logs from the system firewall authenticator and fail2ban and puts them in the repo log directory. With this log you can audit all ssh related activity.
