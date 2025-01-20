@@ -52,12 +52,16 @@ systemctl,systemd,ssh/sshd - These dependencies should be a given but I will lis
 For the project to operate as intended I use a few cronjobs to run the project.
 #### Cronjobs: 
 on the root crontab (for elivated privleges)
+```
 5 */1 * * * {projectLocation}/open_ssh_ports/bin/sentry.sh -c >> {projectLocation}/open_ssh_ports/logs/cron.log 2>&1
+```
 - This will run every hour running sentry in cron mode. which checks if an instance of myssh is running and checks if a ssh server is running.
 - note: pick any interval that works for you.
-on user crontab
+<br> on user crontab
+```
 8 * * * *  grep "Critical" {projectLocation}/open_ssh_ports/logs/sentry.log && grep "Critical" {projectLocation}/open_ssh_ports/logs/sentry.log >> ~/Desktop/CRITICAL_ALERT.log
-  - usefull for gui desktop this will create an error file if ssh was ever left on. similar methods can be used to alert for all connections by greping the auth.log from the sauron.log file.
+```
+  - useful for gui desktop this will create an error file if ssh was ever left on. similar methods can be used to alert for all connections by greping the auth.log from the sauron.log file.
 
 
 ### Notes
