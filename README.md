@@ -1,11 +1,11 @@
 # open_ssh_ports
+[![badge1](https://img.shields.io/badge/OS-Linux-green)](#)
+[![badge2](https://img.shields.io/badge/Language-Bash-green)](#)
+[![badge3](https://img.shields.io/badge/License-MIT-green)](#)
+
 Temporary open ssh and print open IP with Dynamic DHCP
 
-Goal of this project have a shell script that opens and closes ssh ports when running. 
-
-
-# 🚧 This is my README.md this is a work in progress! 🦺 🏗️
-
+Goal of this project have a shell script that opens and closes ssh ports when running. Allowing the user to Open monitor and easily control an ssh host on a network for security purposes.
 
 <div align="center">
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#what-is-this-project">About this project</a> |
@@ -16,8 +16,7 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#License">License</a>
 </div>
 
-## Section
-badges -sub section
+
 ## What is this project?
 Open SSH Ports is a set of bash scripts designed to help me quickly operate a secure connection between a host and client.
 
