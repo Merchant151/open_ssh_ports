@@ -8,12 +8,13 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 
 <div align="center">
-    <a href="https://en.wikipedia.org/wiki/HTTP_404">Home Page</a> |
+    <a name="open_ssh_ports">Overview</a> |
     <a href="https://en.wikipedia.org/wiki/HTTP_404/">About the project</a> |
     <a href="https://en.wikipedia.org/wiki/HTTP_404">Screenshots</a> |
     <a href="https://en.wikipedia.org/wiki/HTTP_404">Documentation</a> |
     <a href="https://en.wikipedia.org/wiki/HTTP_404">About the Developer</a> |
     <a href="https://en.wikipedia.org/wiki/HTTP_404">License</a>
+    [About](#-about)
 </div>
 
 
@@ -67,11 +68,10 @@ on the root crontab (for elivated privleges)
 ### Notes
 I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
 
+You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
+
 ## About the Author 
 Hi, I am Mart Miller. I make small projects to expand my skill set. I am currently interested in learning how to automate and script processes in Shell and Python. 
 
-
-
-You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
 ## Lincense 
 Licensed under the MIT License, Copyright (c) 2025 Merchant151
