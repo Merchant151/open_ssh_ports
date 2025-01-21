@@ -8,17 +8,13 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
 
 
 <div align="center">
-    <a name="open_ssh_ports">Overview</a> |
-    <a href="https://en.wikipedia.org/wiki/HTTP_404/">About the project</a> |
-    <a href="https://en.wikipedia.org/wiki/HTTP_404">Screenshots</a> |
-    <a href="https://en.wikipedia.org/wiki/HTTP_404">Documentation</a> |
-    <a href="https://en.wikipedia.org/wiki/HTTP_404">About the Developer</a> |
-    <a href="https://en.wikipedia.org/wiki/HTTP_404">License</a>
-    [About](#-about)
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#what-is-this-project">About this project</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#Overview">Project overview</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#scripts">Scripts</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#setup">Setup</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#About-the-Developert">About the Developer</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#License">License</a>
 </div>
-
-
-Sections to build 
 
 ## Section
 badges -sub section
@@ -64,13 +60,14 @@ on the root crontab (for elivated privleges)
 ```
   - useful for gui desktop this will create an error file if ssh was ever left on. similar methods can be used to alert for all connections by greping the auth.log from the sauron.log file.
 
+<br>For setup you additionally need to have ufw or (change the firewall used by the software) And you will need to install and configure fail2ban. I beileve there are some notes down below to help with that. 
 
 ### Notes
 I took notes on the softwares used in this project and the process of setting up and using SSH along with this project. 
 
 You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/blob/master/notes.md)
 
-## About the Author 
+## About the Developer 
 Hi, I am Mart Miller. I make small projects to expand my skill set. I am currently interested in learning how to automate and script processes in Shell and Python. 
 
 ## Lincense 
