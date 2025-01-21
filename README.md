@@ -12,7 +12,7 @@ Goal of this project have a shell script that opens and closes ssh ports when ru
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#Overview">Project overview</a> |
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#scripts">Scripts</a> |
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#setup">Setup</a> |
-    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#About-the-Developert">About the Developer</a> |
+    <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#About-the-Developer">About the Developer</a> |
     <a href="https://github.com/Merchant151/open_ssh_ports/blob/master/README.md#License">License</a>
 </div>
 
@@ -70,5 +70,5 @@ You can find those notes [here!](https://github.com/Merchant151/open_ssh_ports/b
 ## About the Developer 
 Hi, I am Mart Miller. I make small projects to expand my skill set. I am currently interested in learning how to automate and script processes in Shell and Python. 
 
-## Lincense 
+## License 
 Licensed under the MIT License, Copyright (c) 2025 Merchant151
