@@ -239,7 +239,9 @@ $> ssh {hostuser}@hostIP
 scp is a good tool to transfer files over ssh: 
 ```
 $> scp ./file_to_remote user@host:/path/to/deliver
-$> scp user@host/path/file_to_local ./
+$> scp user@host:/path/file_to_local ./
+#also for recursive copy: 
+$> scp user@host:/path/to_folder ./
 ```
 ### troubleshooting
 
