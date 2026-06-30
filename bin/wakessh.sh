@@ -6,6 +6,7 @@ echo '==============================================================='
 ufw enable
 ufw allow from 192.168.1.0/24 to any port 443
 ufw allow from 192.168.1.0/24 to any port 22
+ufw allow from 192.168.1.0/24 to any port 21
 systemctl start ssh
 ufw status verbose
 systemctl status ssh
